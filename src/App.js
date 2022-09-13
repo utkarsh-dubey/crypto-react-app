@@ -1,6 +1,8 @@
 import { makeStyles } from '@material-ui/core';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import CoinsTable from './components/CoinsTable';
+import CoinDetails from './Pages/CoinDetails';
 
 const useStyles = makeStyles(()=>({
   App: {
@@ -14,9 +16,13 @@ const useStyles = makeStyles(()=>({
 function App() {
 
   const classes = useStyles();
-  return (
+  return ( 
     <div className={classes.App}>
-      <CoinsTable/>
+      <Routes>
+        <Route path='/' exact element={<CoinsTable/>}/>
+        <Route path='/coin/:id' element={<CoinDetails/>}/>
+      </Routes>
+      
     </div>
   );
 }

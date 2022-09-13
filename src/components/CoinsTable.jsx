@@ -1,7 +1,9 @@
-import { Container, createTheme, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, ThemeProvider, Typography } from '@material-ui/core';
+import { Container, createTheme, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, ThemeProvider, Typography } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
+// import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom"
 
 const CoinsTable = () => {
 
@@ -21,6 +23,8 @@ const CoinsTable = () => {
             console.log("error");
         }
     }
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         callAPI();
@@ -52,6 +56,7 @@ const CoinsTable = () => {
 
 
                     <TableContainer>
+                    {!loading ? 
                         <Table >
                             <TableHead style={{ backgroundColor: "red" }}>
                                 <TableRow>
@@ -82,12 +87,16 @@ const CoinsTable = () => {
                                 </TableRow>
                             </TableHead>
 
-                            {!loading ? <TableBody>
+                            <TableBody>
 
                                 {
                                     dataAPI.slice((page-1)*10, (page-1)*10+10).map(i => {
                                         return (
-                                            <TableRow>
+                                            
+                                                <TableRow 
+                                                onClick={
+                                                    ()=> navigate(`/coin/${i.id}`)
+                                                }>
                                                 <TableCell style={{ display: "flex", gap: 10 }}>
                                                     <img src={i.image} height="30" style={{ marginBottom: 10 }}></img>
                                                     <div style={{ display: "flex", flexDirection: "column", color:"darkgrey" }}>
@@ -107,13 +116,14 @@ const CoinsTable = () => {
 
 
                                             </TableRow>
+                                            
                                         )
                                     })
                                 }
 
-                            </TableBody> : (<h1>Loading</h1>)}
+                            </TableBody> 
 
-                        </Table>
+                        </Table> : (<h1>Loading..</h1>)}
                     </TableContainer>
                     <Pagination
                         count={dataAPI?.length/10}
