@@ -67,9 +67,9 @@ const CoinDetails = () => {
                 <Typography>Market Cap: {coinDetail?.market_data?.market_cap?.inr}</Typography> */}
                       </div>
                   </div>
-                  <div>
+                  
                     <Graph id={coinDetail?.id}/>
-                  </div>
+                  
               </div>
     ):(<h1>loading</h1>)}</>
     
