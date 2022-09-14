@@ -74,7 +74,7 @@ const Corousel = () => {
          disableDotsControls
          disableButtonsControls
          items={items}
-         autoplay={true}/>
+         autoPlay/>
          
     </div>
   )
