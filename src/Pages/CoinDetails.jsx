@@ -1,9 +1,9 @@
-import { makeStyles, Typography } from '@material-ui/core';
+import { LinearProgress, makeStyles, Typography } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Graph from '../components/Graph';
-
+import ReactHtmlParser from 'react-html-parser';
 
 
 const useStyles = makeStyles(()=>({
@@ -31,12 +31,12 @@ const useStyles = makeStyles(()=>({
 const CoinDetails = () => {
 
     const {id} = useParams();
-    const [coinDetail,setCoinDetail] = useState({});
+    const [coinDetail,setCoinDetail] = useState();
     const [loading, setLoading] = useState(true);
 
     const getCoinDetails = async()=>{
         setLoading(true);
-        const {data} = await axios.get('https://api.coingecko.com/api/v3/coins/bitcoin');
+        const {data} = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
         setCoinDetail(data);
        
     }
@@ -49,6 +49,10 @@ const CoinDetails = () => {
 
     const classes = useStyles();
 
+    if(!coinDetail){
+        return <LinearProgress/>;
+    }
+
   return (
     <>
           {!loading ? (
@@ -59,7 +63,7 @@ const CoinDetails = () => {
                           {coinDetail?.name}
                       </Typography>
                       <Typography className={classes.description}>
-                          {coinDetail?.description?.en.split('.')[0]}.
+                          {ReactHtmlParser(coinDetail?.description?.en.split(". ")[0])}.
                       </Typography>
                       <div>
                           <Typography style={{ fontWeight: 'bold', fontSize: 30 }}>Rank: {coinDetail?.market_cap_rank}</Typography>
@@ -68,10 +72,10 @@ const CoinDetails = () => {
                       </div>
                   </div>
                   
-                    <Graph id={coinDetail?.id}/>
+                    <Graph id={id}/>
                   
               </div>
-    ):(<h1>loading</h1>)}</>
+    ):(<LinearProgress/>)}</>
     
     
   )

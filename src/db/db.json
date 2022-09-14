@@ -1,0 +1,29 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "email": "dubeyutkarsh2000@gmail.com",
+      "hashedPassword": "asdbjasbdjsa"
+    },
+    {
+      "id": "2",
+      "email": "dubeyutkarsh20001@gmail.com",
+      "hashedPassword": "asdbjasbdjsa"
+    },
+    {
+      "id": "3",
+      "email": "dubeyutkarsh20002@gmail.com",
+      "hashedPassword": "asdbjasbdjsa"
+    },
+    {
+      "id": "4",
+      "email": "dubeyutkarsh20030@gmail.com",
+      "hashedPassword": "asdbjasbdjsa"
+    },
+    {
+      "id": "5",
+      "email": "abc@gmail.com",
+      "hashedPassword": "asdsadsd"
+    }
+  ]
+}

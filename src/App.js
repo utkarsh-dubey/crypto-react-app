@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import CoinsTable from './components/CoinsTable';
 import CoinDetails from './Pages/CoinDetails';
+import HomePage from './Pages/HomePage';
 
 const useStyles = makeStyles(()=>({
   App: {
@@ -19,7 +20,7 @@ function App() {
   return ( 
     <div className={classes.App}>
       <Routes>
-        <Route path='/' exact element={<CoinsTable/>}/>
+        <Route path='/' exact element={<HomePage/>}/>
         <Route path='/coin/:id' element={<CoinDetails/>}/>
       </Routes>
       

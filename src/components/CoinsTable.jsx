@@ -10,6 +10,7 @@ const CoinsTable = () => {
     const [dataAPI, setDataAPI] = useState([]);
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
+    const [search, setSearch] = useState('');
 
     const callAPI = async () => {
         setLoading(true);
@@ -22,6 +23,13 @@ const CoinsTable = () => {
         catch {
             console.log("error");
         }
+    }
+
+    const handleSearch = ()=>{
+        // const searchValue = e.target.value;
+        return dataAPI.filter((coin)=>{
+            return coin.name.toLowerCase().includes(search)
+        });
     }
 
     const navigate = useNavigate();
@@ -52,7 +60,8 @@ const CoinsTable = () => {
                     <TextField
                         label="Search for a cryptocurrency.."
                         variant='outlined'
-                        style={{ width: "100%", marginBottom: 20, marginTop: 10 }} />
+                        style={{ width: "100%", marginBottom: 20, marginTop: 10 }}
+                        onChange={(e)=> setSearch(e.target.value)} />
 
 
                     <TableContainer>
@@ -90,7 +99,7 @@ const CoinsTable = () => {
                             <TableBody>
 
                                 {
-                                    dataAPI.slice((page-1)*10, (page-1)*10+10).map(i => {
+                                    handleSearch().slice((page-1)*10, (page-1)*10+10).map(i => {
                                         return (
                                             
                                                 <TableRow 
