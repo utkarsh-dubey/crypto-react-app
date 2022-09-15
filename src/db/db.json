@@ -7,7 +7,7 @@
     },
     {
       "id": "2",
-      "email": "dubeyutkarsh20001@gmail.com",
+      "email": "dubeyutkarsh2000@gmail.com",
       "hashedPassword": "asdbjasbdjsa"
     },
     {
@@ -24,6 +24,21 @@
       "id": "5",
       "email": "abc@gmail.com",
       "hashedPassword": "asdsadsd"
+    },
+    {
+      "id": "6",
+      "email": "abcdef@gmail.com",
+      "hashedPassword": "asdsadsdsdsds"
+    },
+    {
+      "id": 1663256833993,
+      "email": "abssds@gmail.com",
+      "hashedPassword": "$2a$10$dD5e9Zdvunk5icYywSZSye/1dFUKpa4Yc9zUSP1WgbrZCqEgB8VwK"
+    }
+  ],
+  "watchlist": [
+    {
+      "name": "bitcoin"
     }
   ]
 }
